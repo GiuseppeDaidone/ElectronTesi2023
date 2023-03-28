@@ -1,0 +1,14 @@
+{
+    "name": "my-project",
+    "version": "1.0.0",
+    "description": "MyApp",
+    "main": "main.js",
+    "author": "Giuseppe Daidone",
+    "license": "OpenSource",
+    "devDependencies": {
+        "electron": "^23.1.0"
+    },
+    "scripts": {
+        "start": "electron ."
+    }
+}
