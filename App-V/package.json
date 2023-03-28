@@ -1,0 +1,14 @@
+{
+    "name": "app-v",
+    "version": "1.0.0",
+    "description": "App Vulnerabile",
+    "main": "main.js",
+    "author": "Giuseppe Daidone",
+    "license": "OpenSource",
+    "devDependencies": {
+        "electron": "^23.2.0"
+    },
+    "scripts": {
+        "start": "electron ."
+    }
+}
