@@ -1,0 +1,14 @@
+{
+    "name": "chatapps",
+    "version": "1.0.0",
+    "description": "Chat App Secure",
+    "main": "main.js",
+    "author": "Giuseppe Daidone",
+    "license": "OpenSource",
+    "devDependencies": {
+        "electron": "^23.2.2"
+    },
+    "scripts": {
+        "start": "electron ."
+    }
+}

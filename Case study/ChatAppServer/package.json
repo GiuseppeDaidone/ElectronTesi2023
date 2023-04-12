@@ -1,12 +1,14 @@
 {
-    "name": "app-v",
+    "name": "chatappserver",
     "version": "1.0.0",
-    "description": "App Vulnerabile",
+    "description": "Chat App Server",
     "main": "main.js",
     "author": "Giuseppe Daidone",
     "license": "OpenSource",
     "devDependencies": {
-        "electron": "^23.2.0"
+        "electron": "^23.2.0",
+        "express": "^4.18.2",
+        "socket.io": "^4.6.1"
     },
     "scripts": {
         "start": "electron ."
