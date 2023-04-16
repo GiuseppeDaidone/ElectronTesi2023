@@ -2,4 +2,3 @@ Visual Studio Code - IDE
 Electron + Node.js + Chromium - App desktop
 Express - Server (localhost)
 Socket.io - Real-time chat
-??? - Prompt message

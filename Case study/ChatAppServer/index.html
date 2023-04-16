@@ -83,7 +83,7 @@
         <form class="login">
             <fieldset>
                 <legend>Login</legend>
-                <input type="text" class="username" id="username" autofocus>
+                <input type="text" class="username" id="username" autocomplete="off" autofocus>
                 <button class="accedi">Accedi</button>
             </fieldset>
         </form>
@@ -92,18 +92,18 @@
             <input type="text" class="input" autocomplete="off" autofocus disabled="disabled"/>
             <button class="button" disabled="disabled">Send</button>
         </form>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.dev.js"></script> 
         <script>
             const form = document.querySelector(".form");
             const label = document.querySelector(".label");
             const input = document.querySelector(".input");
             const button = document.querySelector(".button");
             const messages = document.querySelector(".messages");
-            //const username = prompt("Please enter a username: ", "");
-            // Prompt da sostituire con un alternativa
             let username;
             const formLogin = document.querySelector(".login");
             const inputLogin = document.querySelector(".username");
             const buttonLogin = document.querySelector(".accedi");
+            const socket = io("http://localhost:3000"); //
 
             formLogin.addEventListener("submit", function(event) {
                 event.preventDefault();
@@ -111,6 +111,7 @@
                 label.innerHTML = username;
                 formLogin.innerHTML = "";
                 addMessage("You have joined the chat as '" + username  + "'.");
+                socket.emit("user_join", username);
                 input.removeAttribute("disabled");
                 button.removeAttribute("disabled");
             });
@@ -120,9 +121,25 @@
 
                 addMessage(username + ": " + input.value);
 
+                socket.emit("chat_message", {
+                    message: input.value
+                });
+
                 input.value = "";
                 return false;
             }, false);
+
+            socket.on("chat_message", function(data) {
+                addMessage(data.username + ": " + data.message);
+            });
+            
+            socket.on("user_join", function(data) {
+                addMessage(data + " just joined the chat!");
+            });
+            
+            socket.on("user_leave", function(data) {
+                addMessage(data + " has left the chat.");
+            });
 
             function addMessage(message) {
                 const li = document.createElement("li");
