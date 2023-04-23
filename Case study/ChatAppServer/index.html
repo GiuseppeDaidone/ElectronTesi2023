@@ -133,7 +133,8 @@
 
             formLogin.addEventListener("submit", function(event) {
                 event.preventDefault();
-                username = inputLogin.value;
+                //username = inputLogin.value;
+                username = sanitizeInput(inputLogin.value);
                 label.innerHTML = username;
                 formLogin.innerHTML = "";
                 addMessage("You have joined the chat as '" + username  + "'.");
@@ -144,13 +145,24 @@
                 button.removeAttribute("disabled");
             });
             
+            function sanitizeInput(badInput) {
+                var lt = /</g, 
+                    gt = />/g, 
+                    ap = /'/g, 
+                    ic = /"/g;
+                const goodInput = badInput.toString().replace(lt, "&lt;").replace(gt, "&gt;").replace(ap, "&#39;").replace(ic, "&#34;");
+                return goodInput;
+            }
+
             form.addEventListener("submit", function(event) {
                 event.preventDefault();
 
-                addMessage(username + ": " + input.value);
+                let inputSanitized = sanitizeInput(input.value);
+                //let inputSanitized = input.value;
+                addMessage(username + ": " + inputSanitized);
 
                 socket.emit("chat_message", {
-                    message: input.value
+                    message: inputSanitized
                 });
 
                 input.value = "";

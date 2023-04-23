@@ -12,5 +12,9 @@
     },
     "scripts": {
         "start": "electron ."
+    },
+    "dependencies": {
+        "dompurify": "^3.0.2",
+        "jsdom": "^21.1.1"
     }
 }

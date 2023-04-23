@@ -1,7 +1,7 @@
 {
-    "name": "chatapps",
+    "name": "chatappa",
     "version": "1.0.0",
-    "description": "Chat App Secure",
+    "description": "Chat App Attacker",
     "main": "main.js",
     "author": "Giuseppe Daidone",
     "license": "OpenSource",

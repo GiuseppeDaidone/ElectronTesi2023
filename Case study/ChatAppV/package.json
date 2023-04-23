@@ -1,7 +1,7 @@
 {
     "name": "chatappv",
     "version": "1.0.0",
-    "description": "Chat App Vulnerable",
+    "description": "Chat App Victim",
     "main": "main.js",
     "author": "Giuseppe Daidone",
     "license": "OpenSource",
