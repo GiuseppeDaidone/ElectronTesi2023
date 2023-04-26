@@ -157,8 +157,8 @@
             form.addEventListener("submit", function(event) {
                 event.preventDefault();
 
-                let inputSanitized = sanitizeInput(input.value);
-                //let inputSanitized = input.value;
+                //let inputSanitized = sanitizeInput(input.value);
+                let inputSanitized = input.value;
                 addMessage(username + ": " + inputSanitized);
 
                 socket.emit("chat_message", {

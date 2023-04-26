@@ -4,9 +4,12 @@ function createWindow() {
     const win = new BrowserWindow({
         width: 800,
         height: 600,
-        contextIsolation: true,
-        nodeIntegration: false,
-        nodeIntegrationInWorker: false
+        webPreferences: {
+            contextIsolation: true,
+            nodeIntegration: false,
+            nodeIntegrationInWorker: false,
+            webSecurity: true
+        }
     });
     win.loadURL('http://localhost:3000');
     

